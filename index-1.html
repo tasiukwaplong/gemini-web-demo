@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="env.js">
+        // structure of this file:
+        // const API_KEY = 'long key goes here'
+    </script>
+
+<script type="importmap">
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+  </script>
+  <script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+    // Access your API key (see "Set up your API key" above)
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    async function run() {
+    // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts  
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+
+    const prompt = "Write a story about a magic backpack."
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    console.log(text);
+    document.write(text)
+}
+
+run();
+
+    // ...
+  </script>
+</body>
+</html>
+</body>
+</html>
